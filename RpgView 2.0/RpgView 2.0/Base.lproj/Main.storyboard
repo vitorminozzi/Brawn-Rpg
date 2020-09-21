@@ -158,6 +158,16 @@
                                 <rect key="frame" x="186" y="299" width="161" height="309"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="actionCell" id="m5z-VO-ZT1">
+                                        <rect key="frame" x="0.0" y="28" width="161" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="m5z-VO-ZT1" id="Yt7-Zh-uyz">
+                                            <rect key="frame" x="0.0" y="0.0" width="161" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Mtb-Ho-DnA">
                                 <rect key="frame" x="17" y="429" width="161" height="179"/>
@@ -217,9 +227,9 @@
                         <outlet property="actionsTableView" destination="Msf-Ia-AWr" id="fOp-hF-KAr"/>
                         <outlet property="battleView" destination="YBI-tm-ivf" id="fPD-6d-qtm"/>
                         <outlet property="countLabel" destination="NXI-DG-XEu" id="qHA-ur-0t0"/>
-                        <outlet property="enemyCountLabel" destination="ViP-tU-Mg0" id="VCy-GS-BlY"/>
-                        <outlet property="enemyHpLabel" destination="IeU-rY-cmp" id="2W7-t3-keQ"/>
+                        <outlet property="enemyHpLabel" destination="ViP-tU-Mg0" id="Qpa-1e-dhB"/>
                         <outlet property="enemyImageView" destination="o6o-sj-PIN" id="t0u-2e-x99"/>
+                        <outlet property="enemyNameLabel" destination="IeU-rY-cmp" id="Lbx-J1-lXv"/>
                         <outlet property="enemySuperLabel" destination="aJ3-sA-UWj" id="ITF-IC-o0D"/>
                         <outlet property="hpLabel" destination="R15-Ox-1gQ" id="N2X-eS-h1k"/>
                         <outlet property="itensTableView" destination="Mtb-Ho-DnA" id="a6n-tq-41d"/>

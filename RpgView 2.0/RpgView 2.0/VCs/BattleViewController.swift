@@ -22,7 +22,7 @@ class BattleViewController: UIViewController {
     // MARK: - Enemy Views
     @IBOutlet weak var enemyHpLabel: UILabel!
     @IBOutlet weak var enemySuperLabel: UILabel!
-    @IBOutlet weak var enemyCountLabel: UILabel!
+    @IBOutlet weak var enemyNameLabel: UILabel!
     @IBOutlet weak var nomeLabel: UILabel!
     @IBOutlet weak var enemyImageView: UIImageView!
     
@@ -34,12 +34,15 @@ class BattleViewController: UIViewController {
     var myBrawn:[Brawn] = []
     var enemy:[Enemy] = []
     var stage:Int?
+    var actionsStrings:[String] = []
+    
+    
     
     var counter:Int?
     
     override func viewDidLoad() {
         
-     
+        
         self.myBrawnlerSelected()
         self.userImageView.image = UIImage(named: self.myBrawn[0].imagem ?? "")
         self.hpLabel.text = "Hp : \(String(self.myBrawn[0].hp ?? 0)) "
@@ -47,11 +50,30 @@ class BattleViewController: UIViewController {
         self.stage = 1
         print("Iniciando Stage \(self.stage ?? 0) ")
         self.myEnemySelected()
+        self.actionsTableView.delegate = self
+        self.actionsTableView.dataSource = self
+        
+        
         
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
+     // MARK: - Functions
+    
+    func combatDamage () {
+        
+        
+        
+        let myCombat =  enemy[0].hp! - myBrawn[0].dano!
+        let enemyCombat = myBrawn[0].hp! - enemy[0].dano!
+        
+        self.hpLabel.text = "HP : \(String(enemyCombat)) "
+        self.enemyHpLabel.text = "HP : \(String(myCombat)) "
+        
+        
+    }
+    
     
     
     func myBrawnlerSelected() {
@@ -76,9 +98,9 @@ class BattleViewController: UIViewController {
             self.enemy = [Enemy(nome: "Barbaro", imagem: "barbarian", dano: 2, hp: 10, atksp: 1)]
         }
     
-        self.enemyHpLabel.text = self.enemy[0].nome
+        self.enemyNameLabel.text = self.enemy[0].nome
         self.enemyImageView.image = UIImage(named: self.enemy[0].imagem ?? "")
-        self.enemyCountLabel.text = "Hp : \(String(self.enemy[0].hp ?? 0)) "
+        self.enemyHpLabel.text = "Hp : \(String(self.enemy[0].hp ?? 0)) "
     }
     
     
@@ -90,6 +112,9 @@ class BattleViewController: UIViewController {
         
         
         print(counter ?? 0)
+        self.combatDamage()
+        self.actionsStrings.append(" \(self.myBrawn[0].nome ?? "") causou \(String(self.myBrawn[0].dano ?? 0) ) em \(String(describing: self.enemy[0].nome))  ")
+        self.actionsTableView.reloadData()
     }
     
     /*
@@ -102,5 +127,28 @@ class BattleViewController: UIViewController {
     }
     */
 
+}
+
+
+extension BattleViewController:UITableViewDelegate, UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        self.actionsStrings.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "actionCell", for: indexPath)
+        
+        
+        cell.textLabel?.text = self.actionsStrings[indexPath.row]
+        
+        
+        return cell
+        
+    }
+    
+    
+    
+    
 }
 
