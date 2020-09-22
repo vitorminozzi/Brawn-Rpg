@@ -61,15 +61,17 @@ class BattleViewController: UIViewController {
     }
      // MARK: - Functions
     
-    func combatDamage () {
+    func combatDamage (damage:Int, hp:Int, eDamage:Int, eHp:Int) {
         
+        let combatD = hp - eDamage
+        let eCombatD = eHp - damage
         
+        self.myBrawn[0].hp = combatD
+        self.enemy[0].hp = eCombatD
+    
         
-        let myCombat =  enemy[0].hp! - myBrawn[0].dano!
-        let enemyCombat = myBrawn[0].hp! - enemy[0].dano!
-        
-        self.hpLabel.text = "HP : \(String(enemyCombat)) "
-        self.enemyHpLabel.text = "HP : \(String(myCombat)) "
+        self.hpLabel.text = "HP : \(String(combatD)) "
+        self.enemyHpLabel.text = "HP : \(String(eCombatD)) "
         
         
     }
@@ -95,7 +97,7 @@ class BattleViewController: UIViewController {
         
         if stage == 1{
             
-            self.enemy = [Enemy(nome: "Barbaro", imagem: "barbarian", dano: 2, hp: 10, atksp: 1)]
+            self.enemy = [Enemy(nome: "Barbaro" , imagem: "barbarian", dano: 2, hp: 10, atksp: 1)]
         }
     
         self.enemyNameLabel.text = self.enemy[0].nome
@@ -112,8 +114,8 @@ class BattleViewController: UIViewController {
         
         
         print(counter ?? 0)
-        self.combatDamage()
-        self.actionsStrings.append(" \(self.myBrawn[0].nome ?? "") causou \(String(self.myBrawn[0].dano ?? 0) ) em \(String(describing: self.enemy[0].nome))  ")
+        self.combatDamage(damage: self.myBrawn[0].dano ?? 0, hp: self.myBrawn[0].hp ?? 0, eDamage:self.enemy[0].dano ?? 0 , eHp: self.enemy[0].hp ?? 0)
+        self.actionsStrings.append(" \(self.myBrawn[0].nome ?? "") causou \(String(self.myBrawn[0].dano ?? 0) ) em \(String(describing: self.enemy[0].nome ?? "))  ")
         self.actionsTableView.reloadData()
     }
     
@@ -135,13 +137,14 @@ extension BattleViewController:UITableViewDelegate, UITableViewDataSource{
         self.actionsStrings.count
     }
     
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "actionCell", for: indexPath)
         
         
         cell.textLabel?.text = self.actionsStrings[indexPath.row]
-        
+        cell.textLabel?.adjustsFontSizeToFitWidth = true
         
         return cell
         
