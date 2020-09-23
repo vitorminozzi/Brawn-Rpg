@@ -32,8 +32,14 @@ class BattleViewController: UIViewController {
     
     
     var myBrawn:[Brawn] = []
-    var enemy:[Enemy] = []
-    var stage:Int?
+
+    var enemy:Enemy = Enemy(nome: "Barbaro" , imagem: "barbarian", dano: 2, hp: 10, atksp: 1){ didSet{
+        self.myEnemySelected()
+        }
+        
+    }
+    
+    var stage:Int = 1
     var actionsStrings:[String] = []
     
     
@@ -42,18 +48,14 @@ class BattleViewController: UIViewController {
     
     override func viewDidLoad() {
         
-        
         self.myBrawnlerSelected()
         self.userImageView.image = UIImage(named: self.myBrawn[0].imagem ?? "")
         self.hpLabel.text = "Hp : \(String(self.myBrawn[0].hp ?? 0)) "
         self.countLabel.text = "Rodada 0"
-        self.stage = 1
-        print("Iniciando Stage \(self.stage ?? 0) ")
+        print("Iniciando Stage \(self.stage) ")
         self.myEnemySelected()
         self.actionsTableView.delegate = self
         self.actionsTableView.dataSource = self
-        
-        
         
         super.viewDidLoad()
 
@@ -67,16 +69,13 @@ class BattleViewController: UIViewController {
         let eCombatD = eHp - damage
         
         self.myBrawn[0].hp = combatD
-        self.enemy[0].hp = eCombatD
+        self.enemy.hp = eCombatD
     
         
         self.hpLabel.text = "HP : \(String(combatD)) "
         self.enemyHpLabel.text = "HP : \(String(eCombatD)) "
         
-        
     }
-    
-    
     
     func myBrawnlerSelected() {
         
@@ -95,34 +94,52 @@ class BattleViewController: UIViewController {
     
     func myEnemySelected() {
         
-        if stage == 1{
-            
-            self.enemy = [Enemy(nome: "Barbaro" , imagem: "barbarian", dano: 2, hp: 10, atksp: 1)]
-        }
-    
-        self.enemyNameLabel.text = self.enemy[0].nome
-        self.enemyImageView.image = UIImage(named: self.enemy[0].imagem ?? "")
-        self.enemyHpLabel.text = "Hp : \(String(self.enemy[0].hp ?? 0)) "
+        self.enemyNameLabel.text = self.enemy.nome
+        self.enemyImageView.image = UIImage(named: self.enemy.imagem ?? "")
+        self.enemyHpLabel.text = "Hp : \(String(self.enemy.hp ?? 0)) "
         
     }
     
     
-    func tradeEnemy(phase:Int){
-        
-        if self.enemy[0].hp ?? 0 <= 0{
-            
-            self.stage = phase + 1
-            print("Iniciando stage \(stage ?? 0)")
-            
-        }
+    func cleanEnemy(){
         
         
+        self.enemyNameLabel.text = nil
+        self.enemyImageView.image = nil
+        self.enemyHpLabel.text = nil
         
     }
     
     
     
+    func tradeEnemy(){
+        
+        if self.enemy.hp ?? 0 <= 0{
+            
+            self.stage += 1
+            print("Iniciando stage \(stage)")
+            self.newEnemy()
+            
+        }
+        
+        
+        
+    }
     
+    
+  func newEnemy(){
+        
+        switch stage{
+        
+        case 2:
+            self.enemy = Enemy(nome: "Arqueira" , imagem: "archer", dano: 4, hp: 6, atksp: 1)
+            
+            
+        default:
+            self.cleanEnemy()
+    }
+    
+    }
     
     
     
@@ -134,10 +151,10 @@ class BattleViewController: UIViewController {
         
         
         print(counter ?? 0)
-        self.combatDamage(damage: self.myBrawn[0].dano ?? 0, hp: self.myBrawn[0].hp ?? 0, eDamage:self.enemy[0].dano ?? 0 , eHp: self.enemy[0].hp ?? 0)
-        self.actionsStrings.append("\(self.myBrawn[0].nome ?? "") causou \(String(self.myBrawn[0].dano ?? 0)) em \(String(self.enemy[0].nome ?? ""))  ")
-        self.actionsStrings.append("\(self.enemy[0].nome ?? "") causou \(String(self.enemy[0].dano ?? 0)) em \(String(self.myBrawn[0].nome ?? ""))  ")
-        self.tradeEnemy(phase: stage ?? 0)
+        self.combatDamage(damage: self.myBrawn[0].dano ?? 0, hp: self.myBrawn[0].hp ?? 0, eDamage:self.enemy.dano ?? 0 , eHp: self.enemy.hp ?? 0)
+        self.actionsStrings.append("\(self.myBrawn[0].nome ?? "") causou \(String(self.myBrawn[0].dano ?? 0)) em \(String(self.enemy.nome ?? ""))  ")
+        self.actionsStrings.append("\(self.enemy.nome ?? "") causou \(String(self.enemy.dano ?? 0)) em \(String(self.myBrawn[0].nome ?? ""))  ")
+        self.tradeEnemy()
         self.actionsTableView.reloadData()
         
         
