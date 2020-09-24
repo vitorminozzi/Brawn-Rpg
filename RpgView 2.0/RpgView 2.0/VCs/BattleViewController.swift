@@ -39,6 +39,7 @@ class BattleViewController: UIViewController {
         
     }
     
+    var round = 0
     var stage:Int = 1
     var actionsStrings:[String] = []
     
@@ -51,7 +52,7 @@ class BattleViewController: UIViewController {
         self.myBrawnlerSelected()
         self.userImageView.image = UIImage(named: self.myBrawn[0].imagem ?? "")
         self.hpLabel.text = "Hp : \(String(self.myBrawn[0].hp ?? 0)) "
-        self.countLabel.text = "Rodada 0"
+        self.countLabel.text = "Rodada \(round)"
         print("Iniciando Stage \(self.stage) ")
         self.myEnemySelected()
         self.actionsTableView.delegate = self
@@ -62,6 +63,9 @@ class BattleViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
      // MARK: - Functions
+    
+
+    
     
     func combatDamage (damage:Int, hp:Int, eDamage:Int, eHp:Int) {
         
@@ -116,16 +120,14 @@ class BattleViewController: UIViewController {
         
         if self.enemy.hp ?? 0 <= 0{
             
+           
+            self.actionsStrings = []
+            self.actionsStrings.append("\(self.enemy.nome ?? " ") foi derrotado !!")
             self.stage += 1
             print("Iniciando stage \(stage)")
             self.newEnemy()
-            
         }
-        
-        
-        
     }
-    
     
   func newEnemy(){
         
@@ -134,11 +136,18 @@ class BattleViewController: UIViewController {
         case 2:
             self.enemy = Enemy(nome: "Arqueira" , imagem: "archer", dano: 4, hp: 6, atksp: 1)
             
+        case 3:
+            self.enemy = Enemy(nome: "Servo" , imagem: "minion", dano: 3, hp: 6, atksp: 2)
+            
+        case 4:
+            self.enemy = Enemy(nome: "Gigante" , imagem: "giant", dano: 2, hp: 15, atksp: 1)
+            
+        case 5:
+            self.enemy = Enemy(nome: "Rei Barbaro" , imagem: "barbarianking", dano: 8, hp: 10, atksp: 1)
             
         default:
             self.cleanEnemy()
     }
-    
     }
     
     
@@ -150,7 +159,9 @@ class BattleViewController: UIViewController {
     @IBAction func attackAction(_ sender: Any) {
         
         
-        print(counter ?? 0)
+     
+        self.countLabel.text = "Rodada \(round) "
+        print("rodada \(round)" )
         self.combatDamage(damage: self.myBrawn[0].dano ?? 0, hp: self.myBrawn[0].hp ?? 0, eDamage:self.enemy.dano ?? 0 , eHp: self.enemy.hp ?? 0)
         self.actionsStrings.append("\(self.myBrawn[0].nome ?? "") causou \(String(self.myBrawn[0].dano ?? 0)) em \(String(self.enemy.nome ?? ""))  ")
         self.actionsStrings.append("\(self.enemy.nome ?? "") causou \(String(self.enemy.dano ?? 0)) em \(String(self.myBrawn[0].nome ?? ""))  ")

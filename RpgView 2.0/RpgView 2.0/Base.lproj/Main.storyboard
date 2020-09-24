@@ -236,6 +236,7 @@
                         <outlet property="nomeLabel" destination="uld-x2-7eK" id="J6i-CS-c7c"/>
                         <outlet property="superLabel" destination="9tu-0U-zp8" id="mDU-0O-OWh"/>
                         <outlet property="userImageView" destination="fgn-Oq-MoR" id="jtB-dq-EcH"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="gameOverSegue" id="m1x-hc-7Q0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5tA-uO-SDs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
