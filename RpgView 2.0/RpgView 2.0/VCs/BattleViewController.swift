@@ -64,8 +64,12 @@ class BattleViewController: UIViewController {
     }
      // MARK: - Functions
     
-
-    
+    func tradeRound () {
+        if self.enemy.hp ?? 0 > 0{
+        self.round += 1
+        
+    }
+    }
     
     func combatDamage (damage:Int, hp:Int, eDamage:Int, eHp:Int) {
         
@@ -120,7 +124,9 @@ class BattleViewController: UIViewController {
         
         if self.enemy.hp ?? 0 <= 0{
             
-           
+            self.round = 0
+            print(round)
+            self.countLabel.text = "Rodada \(round) "
             self.actionsStrings = []
             self.actionsStrings.append("\(self.enemy.nome ?? " ") foi derrotado !!")
             self.stage += 1
@@ -159,7 +165,7 @@ class BattleViewController: UIViewController {
     @IBAction func attackAction(_ sender: Any) {
         
         
-     
+        self.tradeRound()
         self.countLabel.text = "Rodada \(round) "
         print("rodada \(round)" )
         self.combatDamage(damage: self.myBrawn[0].dano ?? 0, hp: self.myBrawn[0].hp ?? 0, eDamage:self.enemy.dano ?? 0 , eHp: self.enemy.hp ?? 0)
