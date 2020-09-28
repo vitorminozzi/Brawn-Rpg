@@ -32,6 +32,8 @@ class ViewController: UIViewController {
     
     var numberBegin:Int?
     
+    let longTap = UILongPressGestureRecognizer(target: self, action: #selector(didLongTap(sender:)))
+    
     override func viewDidLoad() {
         
       
@@ -59,6 +61,8 @@ class ViewController: UIViewController {
         
             
         }
+    
+    
  
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -67,14 +71,19 @@ class ViewController: UIViewController {
             if let battleViewController = segue.destination as? BattleViewController{
                 
                 battleViewController.counter = self.numberBegin
-                
             }
-            
         }
-        
     }
                    
-              
+         
+    @objc func didLongTap(sender:UILongPressGestureRecognizer){
+        
+        performSegue(withIdentifier: "infoSegue", sender:UILongPressGestureRecognizer.self)
+    
+    }
+    
+    
+    
             
         }
  
@@ -97,6 +106,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         
         chooseCell?.setupCell(array: self.arrayChooseBrawn[indexPath.item])
         
+       
         return chooseCell ?? UICollectionViewCell()
         
         
@@ -123,6 +133,11 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
             self.chooseNameLabel.text = "Crow"
             self.chooseFunctionLabel.text = "Dano"
         }
+        
+        
+        
+        
+        
 }
 
 }

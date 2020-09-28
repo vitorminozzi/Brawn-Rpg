@@ -98,11 +98,77 @@
                         <outlet property="chooseYourCharLabel" destination="143-qa-vsO" id="iEQ-62-1Sy"/>
                         <outlet property="confirmChooseButton" destination="do6-kF-nKb" id="bEd-ce-BdS"/>
                         <segue destination="7Uf-PU-Eer" kind="presentation" identifier="battleSegue" id="ywI-QH-oFi"/>
+                        <segue destination="HfW-sg-EdD" kind="presentation" identifier="infoSegue" id="Qb1-vd-Gp8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="131.8840579710145" y="138.61607142857142"/>
+        </scene>
+        <!--Info View Controller-->
+        <scene sceneID="aYX-B8-Sl6">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="HfW-sg-EdD" customClass="InfoViewController" customModule="RpgView_2_0" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LHE-Ka-jV6">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pis-q4-rJL">
+                                <rect key="frame" x="20" y="86" width="200" height="350"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wS5-uS-yor">
+                                <rect key="frame" x="244" y="86" width="150" height="350"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="infoCell" id="XK5-Xy-rcu">
+                                        <rect key="frame" x="0.0" y="28" width="150" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XK5-Xy-rcu" id="os0-jc-EOb">
+                                            <rect key="frame" x="0.0" y="0.0" width="150" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LTJ-iO-2jQ">
+                                <rect key="frame" x="20" y="582" width="193" height="211"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <string key="text">ergergergergergergergegergergrgegregergergergegergergergergergergergergergergergergegergergergergergergergergergergergergrggergergergergergeggrregergergergergergergergergergerggregergergergergergerg</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Super" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LkH-ix-7bv">
+                                <rect key="frame" x="20" y="500" width="193" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wWG-z1-Vrb">
+                                <rect key="frame" x="317" y="737" width="77" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Voltar"/>
+                                <connections>
+                                    <action selector="backChooseButton:" destination="HfW-sg-EdD" eventType="touchUpInside" id="8jA-UN-BVd"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="pF2-Ac-fzi"/>
+                    </view>
+                    <connections>
+                        <outlet property="infoImage" destination="Pis-q4-rJL" id="G3f-W8-he9"/>
+                        <outlet property="infoTableView" destination="wS5-uS-yor" id="sgA-7E-eTg"/>
+                        <outlet property="superInfoLabel" destination="LkH-ix-7bv" id="RMR-gD-oNQ"/>
+                        <outlet property="textInfoLabel" destination="LTJ-iO-2jQ" id="RbE-ZV-1vL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iot-ju-sel" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="131.8840579710145" y="819.64285714285711"/>
         </scene>
         <!--Battle View Controller-->
         <scene sceneID="wbN-iP-2fr">

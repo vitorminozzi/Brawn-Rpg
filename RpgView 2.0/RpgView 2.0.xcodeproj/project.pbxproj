@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E7199D6725228F0A002FD299 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7199D6625228F0A002FD299 /* InfoViewController.swift */; };
 		E720DCEB2511201200843FB7 /* BattleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E720DCEA2511201200843FB7 /* BattleViewController.swift */; };
 		E7586F252512E8C7005DF849 /* Enemies.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7586F242512E8C7005DF849 /* Enemies.swift */; };
 		E7EAD860251027BB001C40DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EAD85F251027BB001C40DB /* AppDelegate.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E7199D6625228F0A002FD299 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		E720DCEA2511201200843FB7 /* BattleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleViewController.swift; sourceTree = "<group>"; };
 		E7586F242512E8C7005DF849 /* Enemies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enemies.swift; sourceTree = "<group>"; };
 		E7EAD85C251027BB001C40DB /* RpgView 2.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RpgView 2.0.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -54,6 +56,7 @@
 			children = (
 				E720DCEA2511201200843FB7 /* BattleViewController.swift */,
 				E7EAD863251027BB001C40DB /* ViewController.swift */,
+				E7199D6625228F0A002FD299 /* InfoViewController.swift */,
 			);
 			path = VCs;
 			sourceTree = "<group>";
@@ -177,6 +180,7 @@
 				E7EAD86A251027BB001C40DB /* RpgView_2_0.xcdatamodeld in Sources */,
 				E7EAD864251027BB001C40DB /* ViewController.swift in Sources */,
 				E7EAD87825102969001C40DB /* Brawn.swift in Sources */,
+				E7199D6725228F0A002FD299 /* InfoViewController.swift in Sources */,
 				E7EAD87B25102A1A001C40DB /* ChooseCollectionViewCell.swift in Sources */,
 				E7EAD860251027BB001C40DB /* AppDelegate.swift in Sources */,
 				E7586F252512E8C7005DF849 /* Enemies.swift in Sources */,
