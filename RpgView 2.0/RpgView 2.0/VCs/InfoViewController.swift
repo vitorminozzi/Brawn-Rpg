@@ -10,29 +10,26 @@ import UIKit
 
 class InfoViewController: UIViewController {
 
-    @IBOutlet weak var infoImage: UIImageView!
-    @IBOutlet weak var infoTableView: UITableView!
-    @IBOutlet weak var superInfoLabel: UILabel!
-    @IBOutlet weak var textInfoLabel: UILabel!
-    
-    var infoArray:[Brawn] = []
+    @IBOutlet weak var infoImageView: UIImageView!
+    @IBOutlet weak var infoPickerView: UIPickerView!
+    @IBOutlet weak var infohpLabel: UILabel!
+    @IBOutlet weak var infoDamageLabel: UILabel!
+    @IBOutlet weak var infoAtkSpLabel: UILabel!
+    @IBOutlet weak var infoSuperLabel: UILabel!
     
     
     
     override func viewDidLoad() {
         
         
-        self.infoTableView.delegate = self
-        self.infoTableView.dataSource = self
+ 
         
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func backChooseButton(_ sender: Any) {
-    }
-    
+
     /*
     // MARK: - Navigation
 
@@ -43,18 +40,4 @@ class InfoViewController: UIViewController {
     }
     */
 
-}
-extension InfoViewController: UITableViewDataSource, UITableViewDelegate{
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.infoArray.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        UITableViewCell()
-    }
-    
-    
-    
-    
 }
