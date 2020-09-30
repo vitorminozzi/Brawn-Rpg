@@ -12,6 +12,8 @@ import UIKit
 enum SegueType: String{
     
     case battleSegue
+    case infoSegue
+    case backSegue
     
 }
 
@@ -61,6 +63,13 @@ class ViewController: UIViewController {
         
             
         }
+    @IBAction func sendForInfoButton(_ sender: Any) {
+        
+        
+        performSegue(withIdentifier:SegueType.infoSegue.rawValue, sender: UIButton.self)
+        
+    }
+    
     
     
  
@@ -71,6 +80,12 @@ class ViewController: UIViewController {
             if let battleViewController = segue.destination as? BattleViewController{
                 
                 battleViewController.counter = self.numberBegin
+            }
+        }else{
+        
+            if let infoViewController = segue.destination as? InfoViewController{
+                
+                infoViewController.infoArray = self.arrayChooseBrawn
             }
         }
     }

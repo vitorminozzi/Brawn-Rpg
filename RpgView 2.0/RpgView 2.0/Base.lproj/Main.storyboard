@@ -69,6 +69,14 @@
                                     <action selector="confirmChooseAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SOX-Kh-1Wk"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="enu-7R-bDb">
+                                <rect key="frame" x="331" y="79" width="56" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Info"/>
+                                <connections>
+                                    <action selector="sendForInfoButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WF5-q0-JrU"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -129,7 +137,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hp: 15" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EXB-x8-TXG">
-                                <rect key="frame" x="20" y="618" width="49" height="21"/>
+                                <rect key="frame" x="20" y="618" width="61" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -149,6 +157,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iz2-jQ-j7u">
+                                <rect key="frame" x="23" y="44" width="41" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Voltar"/>
+                                <connections>
+                                    <action selector="backButton:" destination="HfW-sg-EdD" eventType="touchUpInside" id="bI2-Ln-q9y"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="pF2-Ac-fzi"/>
@@ -160,6 +176,8 @@
                         <outlet property="infoImageView" destination="SjD-49-UM2" id="YUT-vG-5Rq"/>
                         <outlet property="infoPickerView" destination="mg3-Zf-51i" id="jdf-v6-Zwf"/>
                         <outlet property="infoSuperLabel" destination="Wml-CE-pHS" id="u3z-iE-y3a"/>
+                        <outlet property="infohpLabel" destination="EXB-x8-TXG" id="J3H-T5-u6c"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="backSegue" id="MDv-Dj-Iys"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iot-ju-sel" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -306,4 +324,7 @@
             <point key="canvasLocation" x="885.50724637681162" y="138.61607142857142"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="MDv-Dj-Iys"/>
+    </inferredMetricsTieBreakers>
 </document>
